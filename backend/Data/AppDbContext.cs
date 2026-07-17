@@ -26,6 +26,10 @@ namespace backend.Data
             modelBuilder.Entity<Transacao>()
                 .Property(t => t.Tipo)
                 .HasConversion<string>();
+
+            modelBuilder.Entity<Transacao>()
+                .Property(t => t.Valor)
+                .HasPrecision(18, 2);
         }
     }
 }
