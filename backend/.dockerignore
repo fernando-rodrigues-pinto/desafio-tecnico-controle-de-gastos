@@ -1,0 +1,8 @@
+bin/
+obj/
+**/bin/
+**/obj/
+
+appsettings.json
+appsettings.Development.json
+appsettingsExample.json
