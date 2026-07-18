@@ -52,4 +52,3 @@ Para encerrar a aplicação, execute o comando abaixo:
 ```bash
 docker-compose down
 ```
- Gerenciamento de estado global e cache (useGastosData).
