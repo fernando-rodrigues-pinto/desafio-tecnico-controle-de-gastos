@@ -20,82 +20,36 @@ Uma aplicação web full-stack para gerenciamento financeiro pessoal. Permite o 
 * Axios
 
 **Backend:**
-* C# .NET 8 (ou superior)
+* C# .NET 8
 * Entity Framework Core (EF Core)
+
+**Infraestrutura:**
+* Docker & Docker Compose
+* MySQL 8.0
 
 ---
 
 ## Como executar o projeto localmente
 
-### 1. Pré-requisitos
-Certifique-se de ter as seguintes ferramentas instaladas na sua máquina:
-* [Node.js](https://nodejs.org/) (versão 18+ recomendada)
-* [.NET SDK](https://dotnet.microsoft.com/download) (versão 8.0 ou superior)
-* CLI do Entity Framework Core. Caso não tenha, instale globalmente via terminal:
+A aplicação foi totalmente conteinerizada para garantir uma execução livre de erros e sem necessidade de configurações manuais de ambiente.
 
-    dotnet tool install --global dotnet-ef
+### 1. Pré-requisito
+* [Docker Desktop](https://www.docker.com/products/docker-desktop/) instalado e rodando na sua máquina.
 
-### 2. Configurando e rodando o Backend (C#)
+### 2. Rodando a aplicação
 
-1. Abra um terminal e navegue até a pasta do backend:
-
+1. Clone o repositório e acesse a pasta raiz do projeto.
+2. Execute o comando abaixo para iniciar todos os serviços:
 ```bash
-cd backend
+docker-compose up -d --build
 ```
+Acesso ao Frontend: Abra o navegador em http://localhost:5174.
 
-2. Restaure as dependências do projeto:
-
+Acesso à API (Swagger): Disponível em http://localhost:5245/swagger.
+   
+### 3. Encerrando a aplicação
+Para encerrar a aplicação, execute o comando abaixo:
 ```bash
-dotnet restore
+docker-compose down
 ```
-
-3. Configure a conexão com o banco de dados. Crie uma cópia do arquivo ``appsettingsExample.json`` (ou utilize o arquivo de exemplo do repositório), o renomeie para ``appsettingsExample`` e preencha a chave DefaultConnection com os dados do seu servidor SQL, usuário e senha.
-
-4. Crie o banco de dados e aplique as migrations estruturais:
-
-```bash
-dotnet ef database update
-```
-
-5. Inicie o servidor:
-
-```bash
-dotnet run
-```
-
-### 3. Configurando e rodando o Frontend (React)
-
-1. Abra um novo terminal e navegue até a pasta do frontend:
-
-```bash
-cd frontend
-```
-
-2. Crie um arquivo chamado .env na raiz da pasta frontend e adicione a seguinte linha para conectar a interface à API:
-
-```
-VITE_API_URL=http://localhost:5245/api
-```
-
-3. Instale as dependências do projeto:
-
-```bash
-npm install
-```
-
-4. Inicie o servidor de desenvolvimento:
-
-```bash
-npm run dev
-```
-
----
-
-## Estrutura do Projeto
-
-O projeto segue uma arquitetura baseada em recursos (Feature-Sliced Design simplificado) no frontend, garantindo escalabilidade e facilidade de manutenção:
-
-* /frontend/src/api: Configuração do Axios e rotas HTTP.
-* /frontend/src/components: Componentes visuais globais (Inputs, Buttons, Modais).
-* /frontend/src/features: Lógica de negócio e telas divididas por domínio (pessoas, transações, totais).
-* /frontend/src/hooks: Gerenciamento de estado global e cache (useGastosData).
+ Gerenciamento de estado global e cache (useGastosData).
