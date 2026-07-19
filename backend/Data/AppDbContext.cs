@@ -21,7 +21,7 @@ namespace backend.Data
                 .HasOne(t => t.Pessoa)
                 .WithMany(p => p.Transacoes)
                 .HasForeignKey(t => t.PessoaId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Cascade); // REQUISITO: Configura a exclusão em cascata. Se uma pessoa for deletada, o MySQL apagará automaticamente todas as transações vinculadas a ela.
 
             modelBuilder.Entity<Transacao>()
                 .Property(t => t.Tipo)

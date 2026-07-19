@@ -31,6 +31,7 @@ namespace backend.Controllers
                 return BadRequest("Pessoa não encontrada.");
             }
 
+            // REGRA DE NEGÓCIO: Conforme especificação do desafio, menores de 18 anos não podem registrar receitas, apenas despesas. Bloqueia a requisição caso falhe.
             if (pessoa.Idade < 18 && transacao.Tipo == TipoTransacao.Receita)
             {
                 return BadRequest("Menores de 18 anos não podem cadastrar receitas.");

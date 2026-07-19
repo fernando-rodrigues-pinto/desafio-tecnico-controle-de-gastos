@@ -9,7 +9,7 @@ namespace backend.Models
         public int Idade { get; set; }
 
         // Relacionamento: Uma pessoa pode ter várias transações
-        [JsonIgnore]
+        [JsonIgnore] // Evita referência circular ao serializar para JSON
         public ICollection<Transacao> Transacoes { get; set; } = new List<Transacao>();
     }
 }
