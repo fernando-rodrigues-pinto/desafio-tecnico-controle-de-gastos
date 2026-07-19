@@ -39,9 +39,14 @@ A aplicação foi totalmente conteinerizada para garantir uma execução livre d
 ### 2. Rodando a aplicação
 
 1. Clone o repositório e acesse a pasta raiz do projeto.
-2. Execute o comando abaixo para iniciar todos os serviços:
+2. Copie o arquivo de exemplo de variáveis de ambiente para criar o seu arquivo `.env` oficial. Rode o comando no terminal (na raiz do projeto):
 ```bash
-docker-compose up -d --build
+cp .env.example .env
+```
+Abra o arquivo .env recém-criado e configure a senha do banco de dados alterando o valor da variável MYSQL_ROOT_PASSWORD: `MYSQL_ROOT_PASSWORD=sua_senha_aqui`
+3. Execute o comando abaixo para iniciar todos os serviços:
+```bash
+docker compose up -d --build
 ```
 Acesso ao Frontend: Abra o navegador em http://localhost:5174.
 
@@ -50,5 +55,5 @@ Acesso à API (Swagger): Disponível em http://localhost:5245/swagger.
 ### 3. Encerrando a aplicação
 Para encerrar a aplicação, execute o comando abaixo:
 ```bash
-docker-compose down
+docker compose down
 ```
